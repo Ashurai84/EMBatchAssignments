@@ -1,18 +1,63 @@
-# Flutter Profile Card Screen Assignment (Light Blue Theme)
+# 📱 Flutter Profile Card UI
 
-A modern, clean, and elegant Light Blue Profile Card application built in Flutter demonstrating the composition of essential layout and styling widgets with custom theme colors.
+<p align="center">
+  <img src="assets/profile_card_ui.png" width="380" alt="Flutter Profile Card UI Screenshot" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"/>
+</p>
+
+<p align="center">
+  <b>A modern, responsive, and clean Light Blue Profile Card application built using Flutter core widgets.</b>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-3.44+-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter"/>
+  <img src="https://img.shields.io/badge/Dart-3.12+-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart"/>
+  <img src="https://img.shields.io/badge/Platform-iOS%20%7C%20Android%20%7C%20Web%20%7C%20macOS-blue?style=for-the-badge" alt="Platforms"/>
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License"/>
+</p>
 
 ---
 
-## 🎯 Assignment Objective
-Design and implement a Profile Card screen incorporating:
-- **`Column`** for vertical layout arrangement.
-- **`Row`** for horizontal layout structuring.
-- **`Container`** for custom cards, Sky Blue gradient styling, border radii, shadows, and paddings.
-- **`CircleAvatar`** for circular profile avatars and glowing light-blue gradient badges.
-- **`Text`** with hierarchical typography styling (Slate 900 bold headlines, Sky Blue subtitles, high contrast).
-- **`Icon`** for visual status indicators, verification badges, contact links, and interactive buttons.
-- **Custom Theme Colors** featuring a clean Light Blue, Sky Blue, Pure White, and Slate light mode palette.
+## 👨‍💻 Author & Project Metadata
+
+- **Developer:** Ashutosh Rai (3rd Year Computer Engineering)
+- **Student Email:** `2024.pashutosh@isu.ac.in`
+- **Location:** Navi Mumbai, India
+- **Mentorship & Guidance:** Special thanks to **Poonam Ma'am**
+- **Repository:** [Ashurai84/EMBatchAssignments](https://github.com/Ashurai84/EMBatchAssignments/tree/profile-card-assignment)
+- **Branch:** `profile-card-assignment`
+
+---
+
+## 🎯 Assignment Overview
+
+This project demonstrates the composition of foundational Flutter widgets to create a production-grade, highly aesthetic Profile Card screen without relying on external UI packages.
+
+### 🧩 Core Widgets Implemented:
+| Widget | Implementation & Role |
+| :--- | :--- |
+| **`Column`** | Main vertical structural spine arranging the top header banner, profile avatar, user name, subtitle, bio container, skills row, statistics, contact info, and action buttons. |
+| **`Row`** | Horizontal alignment for the verified checkmark badge, location pin, equidistant stats metrics, contact tiles, and side-by-side action buttons. |
+| **`Container`** | Styled card surface with `BorderRadius.circular(28)`, 1.5px soft sky-blue border, multi-layer ambient drop shadows, header banner gradient, and chip badges. |
+| **`CircleAvatar`** | Circular profile avatar (radii 42/39) with fallback person icon, enclosed within a multi-stop glowing sky-blue gradient border ring. |
+| **`Text`** | Clear typography hierarchy (Slate 900 bold headline, Sky Blue 600 subtitle, 1.45 line-height bio description, and bold metrics). |
+| **`Icon`** | Semantic visual cues: `Icons.verified_rounded`, `Icons.location_on_rounded`, `Icons.flutter_dash_rounded`, `Icons.email_outlined`, `Icons.phone_outlined`, `Icons.link_rounded`, and action icons. |
+
+---
+
+## 🎨 Theme Palette & Design System (`AppColors`)
+
+The UI is built on a clean **Light Blue & Ice Sky** design system:
+
+| Token | Hex Value | Purpose |
+| :--- | :--- | :--- |
+| `primary` | `#0284C7` | Primary Sky Blue 600 Brand Color & Buttons |
+| `primaryLight` | `#38BDF8` | Sky Blue 400 Gradient Start & Outer Glow |
+| `primaryUltraLight` | `#E0F2FE` | Soft Sky Background Tints & Chip Backdrops |
+| `surface` | `#FFFFFF` | Pure White Card Surface |
+| `cardBorder` | `#BAE6FD` | Sky 200 Card Border Outline |
+| `background` | `#F0F7FF` | Screen Canvas Tint |
+| `textPrimary` | `#0F172A` | Deep Slate 900 Typography (High Contrast) |
+| `textSecondary` | `#475569` | Slate 600 Subtitles & Bio Copy |
 
 ---
 
@@ -20,77 +65,73 @@ Design and implement a Profile Card screen incorporating:
 
 ```
 profile_card_assignment/
+├── assets/
+│   └── profile_card_ui.png         # UI Screenshot
 ├── lib/
-│   ├── main.dart                   # Application entry point with Light ThemeData
+│   ├── main.dart                   # Application entry point with ThemeData.light
 │   ├── screens/
-│   │   └── profile_screen.dart     # Main Profile Card Screen (Light Blue UI)
+│   │   └── profile_screen.dart     # Concise Profile Card screen widget
 │   └── theme/
-│       └── app_colors.dart         # Light Blue & Light Theme Color Palette
+│       └── app_colors.dart         # Custom Light Blue Color tokens & gradients
 ├── test/
-│   └── widget_test.dart            # Flutter Widget Tests (Passing 100%)
-├── generate_docx.py                # DOCX Assignment Report Generator script
-├── Profile_Card_Assignment.docx    # Complete Word Assignment Documentation
-├── pubspec.yaml                    # Flutter dependencies and assets configuration
-└── README.md                       # Assignment Documentation
+│   └── widget_test.dart            # Flutter Widget unit tests (100% Passing)
+├── Profile_Card_Assignment.docx    # Word Report Document (4 Marks Submission)
+├── WHAT_YOU_LEARNED.md             # Comprehensive multi-page technical reflection
+├── generate_docx.py                # DOCX Report Generator Script
+├── pubspec.yaml                    # Flutter dependencies & assets config
+└── README.md                       # Project documentation
 ```
 
 ---
 
-## 🛠️ Required Widgets Used in Detail
+## ⚡ Key Interactive Features
 
-| Widget | Usage & Implementation in this Assignment |
-| :--- | :--- |
-| **`Column`** | • Stacks Sky Blue Header Banner, Avatar, User Details, Bio, Skills, Stats, and Action Buttons.<br>• Vertically aligns stat numbers over labels inside individual stat columns.<br>• Organizes contact details rows vertically. |
-| **`Row`** | • Horizontally positions Name and Verified Badge icon (`Icons.verified_rounded`).<br>• Arranges Location pin with City/Country text.<br>• Evenly distributes Projects, Followers, and Rating statistics across the card width.<br>• Places Follow and Message action buttons side-by-side. |
-| **`Container`** | • Outer Profile Card with `BorderRadius.circular(28)`, Sky Blue border (`#BAE6FD`), and soft drop shadow.<br>• Header Banner with curved top corners and Sky Blue gradient (`#38BDF8` to `#0284C7`).<br>• Avatar outer ring with soft sky-blue glow.<br>• Pastel skill chip badges with custom light backgrounds and borders. |
-| **`CircleAvatar`** | • Encapsulates the user profile picture (`radius: 42` and `radius: 39`).<br>• Positioned overlapping the sky blue header banner with a glowing border.<br>• Houses high-contrast fallback icon (`Icons.person_rounded`) in Sky Blue. |
-| **`Text`** | • Headline: User's Name with bold typography (`fontSize: 24`, `fontWeight: FontWeight.bold`, Slate 900).<br>• Designation: Professional title in Sky Blue 600.<br>• Bio: Multi-line description text with `height: 1.45`.<br>• Numerical Metrics: Emphasized stat numbers with muted labels. |
-| **`Icon`** | • Verified checkmark badge (`Icons.verified_rounded`).<br>• Location marker (`Icons.location_on_rounded`).<br>• Skills icons (Flutter dash, Code, Cloud, Architecture).<br>• Interactive action icons (Follow/Check, Message, Bookmark). |
+- **Dynamic Follow State:** Tapping the **Follow** button toggles state, increments the real-time follower counter (1240 → 1241), switches button style to Emerald Green, and triggers a floating Material `SnackBar`.
+- **Bookmark Toggle:** AppBar action button to bookmark the profile.
+- **Direct Contact Links:** Clean contact info box featuring email (`2024.pashutosh@isu.ac.in`), phone, and GitHub.
+- **Scroll & Viewport Safety:** Wrapped inside `SingleChildScrollView` and constrained with `BoxConstraints(maxWidth: 420)` for optimal display on mobile and web viewports.
 
 ---
 
-## 🎨 Custom Light Blue Palette (`AppColors`)
+## 🚀 Getting Started
 
-- **Primary Sky Blue:** `#0284C7` (Sky Blue 600)
-- **Primary Gradient Start:** `#38BDF8` (Sky Blue 400)
-- **Primary Ultra Light:** `#E0F2FE` (Sky Blue 100)
-- **Surface / Card Background:** `#FFFFFF` (Pure White)
-- **Screen Background Tint:** `#F0F7FF` (Ice Sky)
-- **Card Border:** `#BAE6FD` (Sky Blue 200)
-- **Text Primary:** `#0F172A` (Slate 900)
-- **Text Secondary:** `#475569` (Slate 600)
+### 1. Clone the repository & switch to the branch:
+```bash
+git clone https://github.com/Ashurai84/EMBatchAssignments.git
+cd EMBatchAssignments/profile_card_assignment
+git checkout profile-card-assignment
+```
 
----
+### 2. Install dependencies:
+```bash
+flutter pub get
+```
 
-## 🚀 How to Run the App
+### 3. Run the app:
+```bash
+# Run on Chrome Web
+flutter run -d chrome
 
-1. **Navigate to the assignment directory:**
-   ```bash
-   cd "profile_card_assignment"
-   ```
+# Run on macOS Desktop
+flutter run -d macos
 
-2. **Fetch packages (if needed):**
-   ```bash
-   flutter pub get
-   ```
+# Run on Mobile Device / Emulator
+flutter run
+```
 
-3. **Run the application:**
-   ```bash
-   flutter run
-   ```
-
-4. **Run tests:**
-   ```bash
-   flutter test
-   ```
+### 4. Run tests:
+```bash
+flutter test
+```
 
 ---
 
-## 📄 Assignment Word Document (`.docx`)
-The documentation file [`Profile_Card_Assignment.docx`](file:///Users/ashutoshrai/Desktop/flutter%20/profile_card_assignment/Profile_Card_Assignment.docx) is updated with:
-1. Cover & Assignment Metadata (Light Theme)
-2. Objectives & Concept Overview
-3. Widget Breakdown & Architectural Tree
-4. Light Blue Theme Color Palette & Hex Specifications
-5. Full Source Code
-6. Verification & Test Results
+## 📑 Assignment Documentation & Reports
+
+- 📄 **Word Submission Document:** [**`Profile_Card_Assignment.docx`**](Profile_Card_Assignment.docx)
+- 📝 **Technical Learning Report:** [**`WHAT_YOU_LEARNED.md`**](WHAT_YOU_LEARNED.md)
+
+---
+
+## 📜 License
+This project is open source and available under the [MIT License](LICENSE).
