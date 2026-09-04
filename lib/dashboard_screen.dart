@@ -1,57 +1,37 @@
 import 'package:flutter/material.dart';
 
-class DashboardScreen extends StatefulWidget {
+class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
   @override
-  State<DashboardScreen> createState() => _DashboardScreenState();
-}
-
-class _DashboardScreenState extends State<DashboardScreen> {
-  bool isMobile = true; 
-
-  @override
   Widget build(BuildContext context) {
+    // 1. MEDIAQUERY: Dynamically adapts layout based on screen width
     final screenWidth = MediaQuery.of(context).size.width;
+    final isMobile = screenWidth < 700;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dashboard', style: TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: Colors.indigo.shade50,
-        actions: [
-          TextButton.icon(
-            onPressed: () {
-              setState(() {
-                isMobile = !isMobile;
-              });
-            },
-            icon: Icon(isMobile ? Icons.phone_android : Icons.desktop_windows, color: Colors.indigo),
-            label: Text(
-              isMobile ? 'Mobile View' : 'Desktop View',
-              style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.indigo),
-            ),
-          ),
-          const SizedBox(width: 8),
-        ],
       ),
-
+      // Drawer is used for Mobile view navigation; hidden on desktop
       drawer: isMobile ? const Drawer(child: AppMenu()) : null,
       body: Row(
         children: [
-
+          // 2. EXPANDED: Permanent sidebar in Desktop View
           if (!isMobile)
             const Expanded(
               flex: 2,
               child: AppMenu(),
             ),
 
-
+          // Main Content Area
           Expanded(
             flex: 8,
             child: ListView(
               padding: const EdgeInsets.all(16),
               children: [
-
+                // 3. FLEXIBLE: Welcome banner with Flexible text to prevent overflow
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
@@ -88,13 +68,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ),
                 const SizedBox(height: 18),
 
-
+                // 4. GRIDVIEW: 2 columns on Mobile, 4 columns on Desktop
                 const Text('Overview Metrics', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 10),
                 GridView.count(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-
                   crossAxisCount: isMobile ? 2 : 4,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
@@ -108,7 +87,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ),
                 const SizedBox(height: 20),
 
-
+                // 5. LISTVIEW: Recent Activities list
                 const Text('Recent Activities', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 8),
                 const Card(
@@ -141,6 +120,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 }
 
+// Menu used in Drawer (Mobile) & Sidebar (Desktop)
 class AppMenu extends StatelessWidget {
   const AppMenu({super.key});
 
@@ -169,7 +149,7 @@ class AppMenu extends StatelessWidget {
   }
 }
 
-
+// Compact Metric Card with overflow protection
 class MetricTile extends StatelessWidget {
   final String title;
   final String value;
@@ -180,7 +160,7 @@ class MetricTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
         color: color.withAlpha(25),
         borderRadius: BorderRadius.circular(10),
@@ -190,9 +170,21 @@ class MetricTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(title, style: TextStyle(fontSize: 12, color: Colors.grey.shade700)),
+          Text(
+            title,
+            style: TextStyle(fontSize: 12, color: Colors.grey.shade700),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
           const SizedBox(height: 4),
-          Text(value, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: color)),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.centerLeft,
+            child: Text(
+              value,
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: color),
+            ),
+          ),
         ],
       ),
     );
